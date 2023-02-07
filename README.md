@@ -43,12 +43,12 @@ https://docs.google.com/spreadsheets/d/1OYGy5V4kauishbhb5wcayya_JiIrBmpY3GaVAE3p
 <br>
 
 # ワイヤーフレーム
-![wire](readme/wire_frame.png)
+![wire](readme/wire_frame-1.png)
 
 <br>
 
 # ER図
-![ER](readme/ER1.png)
+![ER](readme/ER2.png)
 
 <br>
 
