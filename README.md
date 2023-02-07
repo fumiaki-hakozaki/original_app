@@ -48,7 +48,7 @@ https://docs.google.com/spreadsheets/d/1OYGy5V4kauishbhb5wcayya_JiIrBmpY3GaVAE3p
 <br>
 
 # ER図
-![ER](readme/ER2.png)
+![ER](readme/ER3.png)
 
 <br>
 
