@@ -9,6 +9,7 @@
 # 就職Termの技術
 
 * device
+* rails_admin
 * お気に入り機能
 
 
@@ -17,7 +18,7 @@
 
 # カリキュラム外の技術
 * ransack
-* Google Map Embed API
+* geocoder
 
 <br>
 
@@ -48,7 +49,7 @@ https://docs.google.com/spreadsheets/d/1OYGy5V4kauishbhb5wcayya_JiIrBmpY3GaVAE3p
 <br>
 
 # ER図
-![ER](readme/ER3.png)
+![ER](readme/ER6.png)
 
 <br>
 
