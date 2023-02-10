@@ -1,0 +1,38 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Factories</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th colspan="3"></th>
+      <th>Name</th>
+      <th>summary</th>
+      <th>address</th>
+      <th>latitude</th>
+      <th>longitude</th>
+      <th>image</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @factories.each do |factory| %>
+      <tr>
+        <td><%= factory.factory_name %></td>
+        <td><%= factory.summary %></td>
+        <td><%= factory.address %></td>
+        <td><%= factory.latitude %></td>
+        <td><%= factory.longitude %></td>
+        <td><%= factory.image %></td>
+        <td><%= link_to '詳細', factory %></td>
+        
+        <td><%= link_to 'Edit', edit_factory_path(factory) %></td>
+        <td><%= link_to 'Destroy', factory, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Factory', new_factory_path %>
