@@ -66,6 +66,6 @@ class FactoriesController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def factory_params
-      params.require(:factory).permit(:factory_name, :summary, :address, :latitude, :longitude, :image)
+      params.require(:factory).permit(:factory_name, :summary, :address, :latitude, :longitude, :image,:image_cache,:user,:user_id)
     end
 end
