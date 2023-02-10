@@ -1,8 +1,14 @@
 Rails.application.routes.draw do
+  devise_for :users, controllers: {
+    registrations: 'users/registrations',
+    sessions: "users/sessions",
+  }
+  resources :users, only: :show
+  root to: "home#top"
+  get 'home/top'
+  resources :favorites, only: [:create, :destroy]
   resources :features
   resources :services
   resources :reviews
   resources :factories
-  devise_for :users
-  # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end
