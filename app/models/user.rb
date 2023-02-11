@@ -5,8 +5,10 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
 
   validates :name, presence: true
-  validates :profile, length: { maximum: 200 }
+  validates :profile, length: { maximum: 250 }
   has_many :favorites, dependent: :destroy
   has_many :favorite_factories, through: :favorites, source: :factory
   has_many :reviews
+
+  mount_uploader :image, ImageUploader
 end
