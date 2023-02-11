@@ -26,9 +26,11 @@
     <%= form.text_field :address %>
   </div>
 
-   <div class="field">
-    <%= form.label :image %>
-    <%= form.file_field :image %>
+
+    <div class="field">
+      <%= form.label :image %>
+      <%= image_tag(@factory.image.url) if @factory.image && @factory.image.url %>
+      <%= form.file_field :image%>
   </div>
 
   <div class="actions">

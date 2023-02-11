@@ -1,20 +1,18 @@
-    <p>
-      <h3>工場名 : <%= @factory.factory_name %></h3>
-    </p>
-
-    <p>
-      <%= image_tag @factory.image.url %>
-    </p>
-
 <p id="notice"><%= notice %></p>
 
-  <% if logged_in? %>
-    <% if @favorite.present? %>
-      <%= link_to 'お気に入り解除する', favorite_path(id: @favorite.id), method: :delete, class: 'btn btn-danger' %>
-    <% else %>
-      <%= link_to 'お気に入りする', favorites_path(factory_id: @factory.id), method: :post, class: 'btn btn-primary' %>
-    <% end %>
-   <% end %>
+  <p>
+    <h3>工場名 : <%= @factory.factory_name %></h3>
+  </p>
+
+  <p>
+  <% if @factory.image.present? %>
+		<%= image_tag @factory.image.url, class:'image' %>
+	<% else %>
+		<%= image_tag 'default-1.jpg', class:'image' %>
+	<% end %>
+  </p>
+
+
 
   <p>
     <strong>概要:</strong>

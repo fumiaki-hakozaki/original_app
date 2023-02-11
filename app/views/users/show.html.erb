@@ -1,6 +1,6 @@
 <h1>登録ユーザーのページ</h1>
   <% if @user.image.present? %>
-	  <%= image_tag @user.image.url,class: 'rounded-circle mr15', width: '150', height: '150' %>
+		<%= image_tag @user.image.url,class: 'rounded-circle mr15', width: '150', height: '150' %>
 	<% else %>
 		<%= image_tag 'default.jpg',width: '150', height: '150' %>
 	<% end %>
