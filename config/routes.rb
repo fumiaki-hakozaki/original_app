@@ -3,7 +3,9 @@ Rails.application.routes.draw do
     registrations: 'users/registrations',
     sessions: "users/sessions",
   }
-  resources :users, only: :show
+  resources :users, only: [:show] do
+  get :favorites, on: :collection
+  end
   root to: "home#top"
   get 'home/top'
   resources :favorites, only: [:create, :destroy]

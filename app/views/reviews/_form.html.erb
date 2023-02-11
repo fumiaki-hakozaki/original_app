@@ -21,6 +21,14 @@
     <%= form.text_area :image %>
   </div>
 
+   <div class="field">
+    <%= form.label :image %>
+    <%= image_tag(review.image.url) if review.image && review.image.url %>
+    <%= form.file_field :image %>
+    <%= form.hidden_field :image_cache %>
+  </div>
+
+
   <div class="actions">
     <%= form.submit %>
   </div>
