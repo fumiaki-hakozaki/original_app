@@ -1,4 +1,39 @@
 <p id="notice"><%= notice %></p>
 
+  <p>
+    <h3>工場名 : <%= @factory.factory_name %></h3>
+  </p>
+
+  <p>
+  <% if @factory.image.present? %>
+		<%= image_tag @factory.image.url, class:'image' %>
+	<% else %>
+		<%= image_tag 'default-1.jpg', class:'image' %>
+	<% end %>
+  </p>
+
+
+
+  <p>
+    <strong>概要:</strong>
+    <%= @factory.summary %>
+  </p>
+
+  <p>
+    <strong>住所:</strong>
+    <%= @factory.address %>
+  </p>
+
+  <p>
+    <strong>Latitude:</strong>
+    <%= @factory.latitude %>
+  </p>
+
+  <p>
+    <strong>Longitude:</strong>
+    <%= @factory.longitude %>
+  </p>
+
+
 <%= link_to 'Edit', edit_factory_path(@factory) %> |
 <%= link_to 'Back', factories_path %>
