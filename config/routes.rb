@@ -11,6 +11,7 @@ Rails.application.routes.draw do
   resources :favorites, only: [:create, :destroy]
   resources :features
   resources :services
-  resources :reviews
-  resources :factories
+  resources :factories do
+    resources :reviews
+  end
 end

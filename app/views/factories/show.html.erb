@@ -24,6 +24,15 @@
   </p>
 
   <p>
+    <strong>特徴:</strong>
+    <% @factory.features.each do |feature| %>
+      <td><%= feature.feature_name %></td>
+    <% end %>
+  </p>
+
+  
+
+  <p>
     <strong>住所:</strong>
     <%= @factory.address %>
   </p>
@@ -38,15 +47,18 @@
     <%= @factory.longitude %>
   </p>
 
-  <p><strong>特徴:</strong>
-    <% @factory.features.each do |feature| %>
-      <td><%= feature.feature_name %></td>
-    <% end %>
-  </p>
+
+  <p>
+    <strong>口コミ:</strong>
+      <% @factory.reviews.each do |review| %>
+      <p>投稿者：<%= review.user.name %></p>
+      <p>内容：<%= review.content %></p>
+      <% end %>
+  </P>
 
 
     <% if %>
-      <%= link_to '口コミを投稿！', new_review_path(@factory) %>
+      <%= link_to '口コミを投稿！', new_factory_review_path(@factory) %>
     <% else%>
       <%= link_to 'ログインして口コミを投稿する！', new_user_session_path %>
     <% end %>

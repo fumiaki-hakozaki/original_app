@@ -8,10 +8,10 @@ class ReviewsController < ApplicationController
 
   # GET /reviews/1 or /reviews/1.json
   def show
+    @reviews = Review.all
       unless logged_in?
       redirect_to new_user_session_path, notece: "ログインしてください"
     end
-    @factory = @review.factory
   end
 
   # GET /reviews/new
@@ -27,9 +27,8 @@ class ReviewsController < ApplicationController
 
   # POST /reviews or /reviews.json
   def create
-    @review = @factory.reviews.build(review_params)
-    @review.user_id = current_user.id
-
+    @review = current_user.reviews.build(review_params)
+    
     respond_to do |format|
       if @review.save
         format.html { redirect_to factory_path(params[:factory_id]), notice: "Review was successfully created." }
