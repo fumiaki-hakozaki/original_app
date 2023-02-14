@@ -6,6 +6,10 @@ class FactoriesController < ApplicationController
     @factories = Factory.all
   end
 
+  def top
+
+  end
+
   # GET /factories/1 or /factories/1.json
   def show
     @favorite = current_user.favorites.find_by(factory_id: @factory.id) 
