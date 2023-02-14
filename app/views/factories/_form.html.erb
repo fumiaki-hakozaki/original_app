@@ -27,10 +27,15 @@
   </div>
 
 
-    <div class="field">
-      <%= form.label :image %>
-      <%= image_tag(@factory.image.url) if @factory.image && @factory.image.url %>
-      <%= form.file_field :image%>
+  <div class="field">
+    <%= form.label :image %>
+    <%= image_tag(@factory.image.url) if @factory.image && @factory.image.url %>
+    <%= form.file_field :image%>
+  </div>
+
+  <div class="field">
+    <%= form.label :feature %>
+    <%= form.collection_check_boxes(:feature_ids, Feature.all, :id, :feature_name) %>
   </div>
 
   <div class="actions">

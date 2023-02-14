@@ -1,4 +1,4 @@
-<%= form_with(model: review) do |form| %>
+<%= form_with(model: [@factory,@review],url: factory_reviews_path, local: true ) do |form| %>
   <% if review.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(review.errors.count, "error") %> prohibited this review from being saved:</h2>
@@ -16,10 +16,14 @@
     <%= form.text_area :content %>
   </div>
 
-  <div class="field">
+
+   <div class="field">
     <%= form.label :image %>
-    <%= form.text_area :image %>
+    <%= image_tag(review.image.url) if review.image && review.image.url %>
+    <%= form.file_field :image %>
+    <%= form.hidden_field :image_cache %>
   </div>
+
 
   <div class="actions">
     <%= form.submit %>

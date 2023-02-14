@@ -12,11 +12,32 @@
 	<% end %>
   </p>
 
-
+  <% if @favorite.present? %>
+    <%= link_to 'お気に入り解除する', favorite_path(id: @favorite.id), method: :delete, class: 'btn btn-danger' %>
+  <% else %>
+    <%= link_to 'お気に入りする', favorites_path(factory_id: @factory.id), method: :post, class: 'btn btn-primary' %>
+  <% end %>
 
   <p>
     <strong>概要:</strong>
     <%= @factory.summary %>
+  </p>
+
+  <p>
+    <strong>特徴:</strong>
+    <% @factory.features.each do |feature| %>
+      <td><%= feature.feature_name %></td>
+    <% end %>
+  </p>
+
+  <p>
+    <strong>サービス:</strong><br>
+      <% @factory.services.each do |service| %>
+       <td>サービス名：<%= service.service_name %></td>
+       <td>価格：<%= service.price %>円</td>
+       <td>その他：<%= service.content %></td>
+       <br>
+      <% end %>
   </p>
 
   <p>
@@ -35,5 +56,22 @@
   </p>
 
 
+  <p>
+    <strong>口コミ:</strong>
+      <% @factory.reviews.each do |review| %>
+      <p>投稿者：<%= review.user.name %></p>
+      <p>内容：<%= review.content %></p>
+      <% end %>
+  </P>
+
+
+    <% if %>
+      <%= link_to '口コミを投稿！', new_factory_review_path(@factory) %>
+    <% else%>
+      <%= link_to 'ログインして口コミを投稿する！', new_user_session_path %>
+    <% end %>
+  <p><%= link_to '工場一覧に戻る', factories_path %></p>
+
 <%= link_to 'Edit', edit_factory_path(@factory) %> |
 <%= link_to 'Back', factories_path %>
+<%= link_to 'サービス', new_factory_service_path(@factory) %>

@@ -8,7 +8,8 @@ class FactoriesController < ApplicationController
 
   # GET /factories/1 or /factories/1.json
   def show
-    @favorite = current_user.favorites.find_by(factory_id: @factory.id)
+    @favorite = current_user.favorites.find_by(factory_id: @factory.id) 
+    @services = @factory.services
   end
 
   # GET /factories/new
@@ -66,6 +67,6 @@ class FactoriesController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def factory_params
-      params.require(:factory).permit(:factory_name, :summary, :address, :latitude, :longitude, :image,:image_cache,:user,:user_id)
+      params.require(:factory).permit(:factory_name, :summary, :address, :latitude, :longitude, :image,:image_cache,:user,:user_id,{ feature_ids: [] })
     end
 end
