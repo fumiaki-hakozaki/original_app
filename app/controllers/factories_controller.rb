@@ -9,7 +9,7 @@ class FactoriesController < ApplicationController
   # GET /factories/1 or /factories/1.json
   def show
     @favorite = current_user.favorites.find_by(factory_id: @factory.id) 
-    
+    @services = @factory.services
   end
 
   # GET /factories/new

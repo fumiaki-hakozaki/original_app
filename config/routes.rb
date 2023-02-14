@@ -10,8 +10,8 @@ Rails.application.routes.draw do
   get 'home/top'
   resources :favorites, only: [:create, :destroy]
   resources :features
-  resources :services
   resources :factories do
     resources :reviews
+    resources :services
   end
 end

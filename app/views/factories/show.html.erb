@@ -30,7 +30,15 @@
     <% end %>
   </p>
 
-  
+  <p>
+    <strong>サービス:</strong><br>
+      <% @factory.services.each do |service| %>
+       <td>サービス名：<%= service.service_name %></td>
+       <td>価格：<%= service.price %>円</td>
+       <td>その他：<%= service.content %></td>
+       <br>
+      <% end %>
+  </p>
 
   <p>
     <strong>住所:</strong>
@@ -66,3 +74,4 @@
 
 <%= link_to 'Edit', edit_factory_path(@factory) %> |
 <%= link_to 'Back', factories_path %>
+<%= link_to 'サービス', new_factory_service_path(@factory) %>
