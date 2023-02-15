@@ -5,14 +5,12 @@ RailsAdmin.config do |config|
 
   ## == Devise ==
   config.authenticate_with do
-  #   warden.authenticate! scope: :user
-      require_login
-   end
+    warden.authenticate! scope: :user
+  end
    config.current_user_method(&:current_user)
-   config.parent_controller = 'ApplicationController'
 
   ## == CancanCan ==
-  # config.authorize_with :cancancan
+   config.authorize_with :cancancan
 
   ## == Pundit ==
   # config.authorize_with :pundit
