@@ -17,6 +17,7 @@ class ServicesController < ApplicationController
 
   # GET /services/1/edit
   def edit
+  @factory = Factory.find(params[:factory_id])
   end
 
   # POST /services or /services.json

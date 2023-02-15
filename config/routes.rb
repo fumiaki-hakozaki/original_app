@@ -13,5 +13,8 @@ Rails.application.routes.draw do
   resources :factories do
     resources :reviews
     resources :services
+    collection do
+      get 'search'
+    end
   end
 end
