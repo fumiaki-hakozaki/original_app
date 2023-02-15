@@ -45,16 +45,28 @@
     <%= @factory.address %>
   </p>
 
-  <p>
-    <strong>Latitude:</strong>
-    <%= @factory.latitude %>
-  </p>
-
-  <p>
-    <strong>Longitude:</strong>
-    <%= @factory.longitude %>
-  </p>
-
+<div id="map">
+</div>
+<style>
+#map {
+height: 300px;
+width: 600px;
+}   
+</style>
+ <script>
+    function initMap(){
+      const myPlace = { lat: <%= @factory.latitude %>, lng: <%= @factory.longitude %> }
+      let map = new google.maps.Map(document.getElementById('map'), {
+        center: myPlace,
+        zoom: 15
+      });
+      new google.maps.Marker({
+        position: myPlace,
+        map
+      });
+    }
+  </script>
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBLHAZ3W9pzw0VWK9P6MlrNc-qz9-Px2lE&callback=initMap" async defer></script>
 
   <p>
     <strong>口コミ:</strong>
