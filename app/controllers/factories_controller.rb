@@ -6,9 +6,22 @@ class FactoriesController < ApplicationController
     @factories = Factory.all
   end
 
+  def top
+    @features = Feature.all
+    @factories_search = Factory.ransack(params[:q])
+    @factories = @factories_search.result
+    @factories = @factories.where(factory_features: Feature.where(feature_id: params[:q][:feature_id])) if params[:q].present? && params[:q][:factory_name].present?
+  end
+
+  def search
+    @q = Factory.ransack(params[:q])
+    @factories = @q.result(distinct: true).includes(:features)
+    render "factories/index"
+  end
+
   # GET /factories/1 or /factories/1.json
   def show
-    @favorite = current_user.favorites.find_by(factory_id: @factory.id) 
+    @favorite = current_user.favorites.find_by(factory_id: @factory.id)
     @services = @factory.services
   end
 

@@ -6,12 +6,15 @@ Rails.application.routes.draw do
   resources :users, only: [:show] do
   get :favorites, on: :collection
   end
-  root to: "home#top"
-  get 'home/top'
+  root to: "factories#top"
+  get 'factories/top'
   resources :favorites, only: [:create, :destroy]
   resources :features
   resources :factories do
     resources :reviews
     resources :services
+    collection do
+      get 'search'
+    end
   end
 end

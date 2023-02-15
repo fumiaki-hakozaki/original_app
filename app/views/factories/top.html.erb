@@ -1,0 +1,22 @@
+<h1>Factory#top</h1>
+  <%= link_to 'ログアウト',destroy_user_session_path , method: :delete %>
+
+<%= search_form_for @factories_search, url: search_factories_path do |f| %>
+    <p><%= f.label :feature, "カテゴリーをクリックして検索してください" %></p>
+    <h4>カテゴリー</h4>
+  <% Feature.all.each do |feature| %>
+    <%= f.check_box :features_id_eq_any, { multiple: true, checked: feature[:checked], disabled: feature[:disabled], include_hidden: false }, feature[:id] %>
+    <label><%= feature.feature_name %></label>
+  <% end %>
+    <p><%= f.submit "検索", class: "search_btn" %></P>
+<% end %>
+
+  <h2> 住所・名前から工場を検索！ </h2>
+<%= search_form_for @factories_search, url: search_factories_path do |f| %>
+  <%= f.label :factory_name_or_address_cont, "工場名・住所のキーワード検索" %>
+  <%= f.search_field :factory_name_or_address_cont %>
+  <%= f.submit "検索" %>
+<% end %>
+
+
+<%= link_to '一覧', factories_path %>
