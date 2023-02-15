@@ -6,9 +6,18 @@ class ApplicationController < ActionController::Base
     user_path(current_user.id)
   end
 
+  def not_authenticated
+    redirect_to main_app.login_path
+  end
+
   private
   def configure_permitted_parameters
     devise_parameter_sanitizer.permit(:sign_up, keys: [:name, :email])
     devise_parameter_sanitizer.permit(:account_update, keys: [:name, :email, :image])
+  end
+
+  def not_authenticated
+    flash[:info] = 'ログインしてください'
+    redirect_to main_app.login_path
   end
 end
