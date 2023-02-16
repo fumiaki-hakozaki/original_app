@@ -15,14 +15,17 @@
       <tr>
         <td><%= factory.factory_name %></td>
         <td><%= factory.address %></td>
-        <td><%= link_to '詳細', factory %></td>
-        <td><%= link_to 'Edit', edit_factory_path(factory) %></td>
-        <td><%= link_to 'Destroy', factory, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to '店舗情報確認', factory %></td>
+        <% if current_user.admin? %>
+        <td><%= link_to '編集', edit_factory_path(factory) %></td>
+        <td><%= link_to '削除', factory, method: :delete, data: { confirm: '削除してよろしいですか?' } %></td>
+        <% end %>
       </tr>
     <% end %>
   </tbody>
 </table>
 
 <br>
-
-<%= link_to 'New Factory', new_factory_path %>
+<% if current_user.admin? %>
+<%= link_to '工場新規登録', new_factory_path %>
+<% end %>

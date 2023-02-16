@@ -27,17 +27,31 @@ class FactoriesController < ApplicationController
 
   # GET /factories/new
   def new
+    if current_user != @user
+      unless current_user.admin?
+        redirect_to factories_path 
+      end
+    end
     @factory = Factory.new
   end
 
   # GET /factories/1/edit
   def edit
+    if current_user != @user
+      unless current_user.admin?
+        redirect_to factories_path 
+      end
+    end
   end
 
   # POST /factories or /factories.json
   def create
     @factory = Factory.new(factory_params)
-
+    if current_user != @user
+      unless current_user.admin?
+        redirect_to factories_path 
+      end
+    end
     respond_to do |format|
       if @factory.save
         format.html { redirect_to factory_url(@factory), notice: "Factory was successfully created." }
