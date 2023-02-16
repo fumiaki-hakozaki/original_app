@@ -7,7 +7,12 @@ class ApplicationController < ActionController::Base
     user_path(current_user.id)
   end
 
+  def after_sign_out_path_for(resource)
+    root_path
+  end
+
   def not_authenticated
+    flash[:info] = 'ログインしてください'
     redirect_to main_app.login_path
   end
 
@@ -17,8 +22,4 @@ class ApplicationController < ActionController::Base
     devise_parameter_sanitizer.permit(:account_update, keys: [:name, :email, :image])
   end
 
-  def not_authenticated
-    flash[:info] = 'ログインしてください'
-    redirect_to main_app.login_path
-  end
 end
