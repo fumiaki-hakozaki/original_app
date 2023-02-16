@@ -5,8 +5,8 @@
     <p><%= f.label :feature, "カテゴリーをクリックして検索してください" %></p>
     <h4>カテゴリー</h4>
   <% Feature.all.each do |feature| %>
-    <%= f.check_box :features_id_eq_any, { multiple: true, checked: feature[:checked], disabled: feature[:disabled], include_hidden: false }, feature[:id] %>
     <label><%= feature.feature_name %></label>
+    <%= f.check_box :features_id_eq_any, { multiple: true, checked: feature[:checked], disabled: feature[:disabled], include_hidden: false }, feature[:id] %>
   <% end %>
     <p><%= f.submit "検索", class: "search_btn" %></P>
 <% end %>
