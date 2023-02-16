@@ -70,10 +70,13 @@ width: 600px;
 
   <p>
     <strong>口コミ:</strong>
-      <% @factory.reviews.each do |review| %>
+    <% @factory.reviews.each do |review| %>
       <p>投稿者：<%= review.user.name %></p>
       <p>内容：<%= review.content %></p>
+      <% if review.image.present? %>
+         <p><%= image_tag review.image.url,width: '150', height: '150' %></p>
       <% end %>
+    <% end %>
   </P>
 
 
