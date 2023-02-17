@@ -10,7 +10,7 @@
     <p><%= f.submit "検索", class: "search_btn" %></P>
 <% end %>
 
-  <h3> 住所・名前から工場を検索！ </h3>
+  <h4> 住所・名前から工場を検索！ </h4>
 <%= search_form_for @factories_search, url: search_factories_path do |f| %>
   <%= f.label :factory_name_or_address_cont, "工場名・住所のキーワード検索" %>
   <%= f.search_field :factory_name_or_address_cont, placeholder:"例）DICオートサービス" %>
