@@ -1,60 +1,62 @@
-<p id="notice"><%= notice %></p>
+<div class="container">
+  <div class="row">
+    <div class="col-sm-6">
+      <h3>工場名: <%= @factory.factory_name %></h3>
+    
+      <% if @factory.image.present? %>
+        <%= image_tag @factory.image.url, class: 'img-fluid rounded' %>
+      <% else %>
+        <%= image_tag 'default-1.jpg', class: 'img-fluid rounded' %>
+      <% end %>
 
-  <p>
-    <h3>工場名 : <%= @factory.factory_name %></h3>
-  </p>
+      <% if @favorite.present? %>
+        <%= link_to 'お気に入り解除する', favorite_path(id: @favorite.id), method: :delete, class: 'btn btn-outline-danger mt-3' %>
+      <% else %>
+        <%= link_to 'お気に入りする', favorites_path(factory_id: @factory.id), method: :post, class: 'btn btn-outline-primary mt-3' %>
+      <% end %>
+    </div>
+    <div class="col-sm-6">
+  <p><strong>概要:</strong> <%= @factory.summary %></p>
 
-  <p>
-  <% if @factory.image.present? %>
-		<%= image_tag @factory.image.url, class:'image' %>
-	<% else %>
-		<%= image_tag 'default-1.jpg', class:'image' %>
-	<% end %>
-  </p>
-
-  <% if @favorite.present? %>
-    <%= link_to 'お気に入り解除する', favorite_path(id: @favorite.id), method: :delete, class: 'btn btn-danger' %>
-  <% else %>
-    <%= link_to 'お気に入りする', favorites_path(factory_id: @factory.id), method: :post, class: 'btn btn-primary' %>
-  <% end %>
-
-  <p>
-    <strong>概要:</strong>
-    <%= @factory.summary %>
-  </p>
-
-  <p>
-    <strong>特徴:</strong>
+  <p><strong>特徴:</strong>
     <% @factory.features.each do |feature| %>
-      <td><%= feature.feature_name %></td>
+      <span class="badge badge-pill badge-warning"><%= feature.feature_name %></span>
     <% end %>
   </p>
 
-  <p>
-    <strong>サービス:</strong><br>
+  <p><strong>サービス:</strong></p>
+  <table class="table table-bordered">
+    <thead>
+      <tr>
+        <th>サービス名</th>
+        <th>価格</th>
+        <th>内容</th>
+      </tr>
+    </thead>
+    <tbody>
       <% @factory.services.each do |service| %>
-       <td>サービス名：<%= service.service_name %></td>
-       <td>価格：<%= service.price %>円</td>
-       <td>その他：<%= service.content %></td>
-       <br>
+        <tr>
+          <td><%= service.service_name %></td>
+          <td><%= service.price %>円</td>
+          <td><%= service.content %></td>
+        </tr>
       <% end %>
-  </p>
+    </tbody>
+  </table>
 
-  <p>
-    <strong>住所:</strong>
-    <%= @factory.address %>
-  </p>
+  <p><strong>住所:</strong> <%= @factory.address %></p>
 
-<div id="map">
-</div>
-<style>
-#map {
-height: 300px;
-width: 600px;
-}   
-</style>
- <script>
-    function initMap(){
+  <div id="map" class="mb-3"></div>
+
+  <style>
+    #map {
+      height: 300px;
+      width: 100%;
+    }
+  </style>
+
+  <script>
+    function initMap() {
       const myPlace = { lat: <%= @factory.latitude %>, lng: <%= @factory.longitude %> }
       let map = new google.maps.Map(document.getElementById('map'), {
         center: myPlace,
@@ -66,27 +68,39 @@ width: 600px;
       });
     }
   </script>
-<script src="https://maps.googleapis.com/maps/api/js?key=<%= ENV['API_KEY'] %>&callback=initMap" async defer></script>
 
-  <p>
-    <strong>口コミ:</strong>
-    <% @factory.reviews.each do |review| %>
-      <p>投稿者：<%= review.user.name %></p>
-      <p>内容：<%= review.content %></p>
-      <% if review.image.present? %>
-         <p><%= image_tag review.image.url,width: '150', height: '150' %></p>
+  <script src="https://maps.googleapis.com/maps/api/js?key=<%= ENV['API_KEY'] %>&callback=initMap" async defer></script>
+</div>
+
+<div class="col-sm-6">
+  <div class="container">
+    <p><strong>口コミ:</strong></p>
+    <div class="col-lg-8">
+      <% @factory.reviews.each do |review| %>
+        <div class="card mb-3">
+          <div class="card-body">
+            <h5 class="card-title">投稿者：<%= review.user.name %></h5>
+            <p class="card-text">内容：<%= review.content %></p>
+            <% if review.image.present? %>
+              <div class="text-center">
+                <%= image_tag review.image.url, width: '150', height: '150', class: 'img-fluid rounded' %>
+              </div>
+            <% end %>
+          </div>
+        </div>
       <% end %>
-    <% end %>
-  </P>
-
-
+    </div>
     <% if %>
-      <%= link_to '口コミを投稿！', new_factory_review_path(@factory) %>
+      <%= link_to '口コミを投稿！', new_factory_review_path(@factory),class:"btn btn-outline-info" %>
     <% else%>
       <%= link_to 'ログインして口コミを投稿する！', new_user_session_path %>
     <% end %>
-  <p><%= link_to '工場一覧に戻る', factories_path %></p>
 
-<%= link_to 'Edit', edit_factory_path(@factory) %> |
-<%= link_to 'Back', factories_path %>
-<%= link_to 'サービス', new_factory_service_path(@factory) %>
+    <% if user_signed_in? %>
+      <%= link_to 'Back', factories_path, class: 'btn btn-outline-secondary' %>
+    <% end %>
+    <% if current_user.admin? %>
+      <%= link_to 'サービス登録', new_factory_service_path(@factory), class: 'btn btn-outline-success' %>
+    <% end %>
+  </div>
+</div>

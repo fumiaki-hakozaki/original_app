@@ -1,31 +1,39 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Factories</h1>
+<div class="container mt-5">
+  <h1 class="text-center">整備工場一覧</h1>
 
-<table>
-  <thead>
-    <tr>
-      <th>Name</th>
-      <th>address</th>
-    </tr>
-  </thead>
+  <div class="table-responsive">
+    <table class="table table-hover">
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Address</th>
+          <th></th>
+          <% if current_user.admin? %>
+          <th></th>
+          <th></th>
+          <% end %>
+        </tr>
+      </thead>
 
-  <tbody>
-    <% @factories.each do |factory| %>
-      <tr>
-        <td><%= factory.factory_name %></td>
-        <td><%= factory.address %></td>
-        <td><%= link_to '店舗情報確認', factory %></td>
-        <% if current_user.admin? %>
-        <td><%= link_to '編集', edit_factory_path(factory) %></td>
-        <td><%= link_to '削除', factory, method: :delete, data: { confirm: '削除してよろしいですか?' } %></td>
+      <tbody>
+        <% @factories.each do |factory| %>
+          <tr>
+            <td><%= factory.factory_name %></td>
+            <td><%= factory.address %></td>
+            <td><%= link_to '工場情報確認', factory, class: 'btn btn-outline-primary' %></td>
+            <% if current_user.admin? %>
+            <td><%= link_to '編集', edit_factory_path(factory), class: 'btn btn-outline-secondary' %></td>
+            <td><%= link_to '削除', factory, method: :delete, data: { confirm: '削除してよろしいですか?' }, class: 'btn btn-outline-danger' %></td>
+            <% end %>
+          </tr>
         <% end %>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+      </tbody>
+    </table>
+  </div>
 
-<br>
-<% if current_user.admin? %>
-<%= link_to '工場新規登録', new_factory_path %>
-<% end %>
+  <% if current_user.admin? %>
+  <%= link_to '工場新規登録', new_factory_path, class: 'btn btn-outline-success' %>
+  <% end %>
+</div>

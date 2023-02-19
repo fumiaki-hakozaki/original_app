@@ -1,20 +1,24 @@
 <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Service_name:</strong>
-  <%= @service.service_name %>
-</p>
-
-<p>
-  <strong>Price:</strong>
-  <%= @service.price %>
-</p>
-
-<p>
-  <strong>Content:</strong>
-  <%= @service.content %>
-</p>
-
-
-<%= link_to 'Edit', edit_factory_service_path(@service) %> |
-<%= link_to 'Back', factory_services_path %>
+<div class="container mt-5">
+  <div class="row justify-content-center">
+    <div class="col-lg-8 col-md-10">
+      <div class="card">
+        <div class="card-header">
+          <h3 class="mb-0">サービス詳細</h3>
+        </div>
+        <div class="card-body">
+          <h4 class="card-text">サービス内容: <%= @service.service_name %></h4>
+          <hr>
+          <h4 class="card-text">内容等: <%= @service.content %></h4>
+          <hr>
+          <h4 class="card-text mb-0">Price: <%= @service.price %></h4>
+        </div>
+        <div class="card-footer">
+          <%= link_to '編集', edit_factory_service_path(@service), class: "btn btn-outline-primary mr-3" %>
+          <%= link_to '戻る', factory_services_path, class: "btn btn-outline-secondary" %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

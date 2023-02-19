@@ -1,126 +1,127 @@
-<%= form_with(model: factory) do |form| %>
+<%= form_with(model: factory, class: "form") do |form| %>
   <% if factory.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(factory.errors.count, "error") %> の為、このfactoryは保存出来ませんでした:</h2>
-
+    <div class="alert alert-danger" role="alert">
+      <h4 class="alert-heading"><%= pluralize(factory.errors.count, "error") %> prohibited this factory from being saved:</h4>
       <ul>
-        <% factory.errors.each do |error| %>
-          <li><%= error.full_message %></li>
+        <% factory.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
         <% end %>
       </ul>
     </div>
   <% end %>
 
-  <div class="field">
+  <div class="form-group">
     <%= form.label :name %>
-    <%= form.text_field :factory_name %>
+    <%= form.text_field :factory_name, class: 'form-control' %>
   </div>
 
-  <div class="field">
+  <div class="form-group">
     <%= form.label :summary %>
-    <%= form.text_field :summary %>
+    <%= form.text_field :summary, class: 'form-control' %>
   </div>
 
-  <div class="field">
+  <div class="form-group">
     <%= form.label :address %>
-    <%= form.text_field :address %>
+    <%= form.text_field :address, class: 'form-control' %>
   </div>
 
-  <div class="field">
+  <div class="form-group">
     <%= form.hidden_field :latitude %>
     <%= form.hidden_field :longitude %>
   </div>
 
-      <input id="address" type="textbox" value="GeekSalon">
-      <input type="button" value="検索" onclick="codeAddress()">
-      <p>マーカーをドラック＆ドロップで位置の調整ができます。<p>
-      <div id='map'></div>
+  <input id="address" type="textbox" value="GeekSalon">
+  <input type="button" value="検索" onclick="codeAddress()">
+  <p>マーカーをドラック＆ドロップで位置の調整ができます。<p>
+  <div id='map'></div>
 
-<style>
-#map {
-height: 600px;
-width: 600px;
-}
-</style>
-
-<script>
-var marker
-var myLatLng
-var map
-var map_lat
-var map_lng
-
-function initMap(){
-   myLatLng = {lat: 35.68090045006303, lng: 139.76690798417752}
-   marker = new google.maps.Marker();
-   map_lat = document.getElementById('factory_latitude')
-   map_lng = document.getElementById('factory_longitude')
-   //↑map.hidden_fieldによって生成された<input>のid
-   //ブラウザの開発者モードで確認
-   map = new google.maps.Map(document.getElementById('map'), {
-  center: myLatLng,
-  zoom: 8
-  });
-
- google.maps.event.addListener(map, 'click', mylistener);
-
-    //クリックしたときの処理
-  function mylistener(event){
-    //markerの位置を設定
-    //event.latLng.lat()でクリックしたところの緯度を取得
-    marker.setPosition(new google.maps.LatLng(event.latLng.lat(), event.latLng.lng()));
-    //marker設置
-    marker.setMap(map);   
-    console.log(event.latLng.lat(), event.latLng.lng());
-    map_lat.value = event.latLng.lat();
-    map_lng.value = event.latLng.lng();
-  }
-}
-function deleteMarker(){
-  marker.setMap(null);
-  map_lat.value = "";
-  map_lng.value = "";
-}
-
-//追加した関数
-function codeAddress(){
-  geocoder = new google.maps.Geocoder()
-  let inputAddress = document.getElementById('address').value;
-  geocoder.geocode( { 
-    'address': inputAddress,
-     'region': 'jp'
-    }, function(results, status) {
-    if (status == 'OK') {
-      map.setCenter(results[0].geometry.location);
-      map_result = results[0].geometry.location;
-      map_lat.value = map_result.lat();
-      map_lng.value = map_result.lng();
-      marker.setPosition(new google.maps.LatLng(map_result.lat(), map_result.lng()));
-      marker.setMap(map);
-      console.log(map_lat.value,map_lng.value);
-    } else {
-      alert('該当する結果がありませんでした');
-      initMap();
+  <style>
+    #map {
+    height: 300px;
+    width: 500px;
     }
-  });   
-}
+  </style>
 
-</script>
-<script src="https://maps.googleapis.com/maps/api/js?key=<%= ENV['API_KEY'] %>&callback=initMap" async defer></script>
+  <script>
+    var marker
+    var myLatLng
+    var map
+    var map_lat
+    var map_lng
 
+    function initMap(){
+      myLatLng = {lat: 35.68090045006303, lng: 139.76690798417752}
+      marker = new google.maps.Marker();
+      map_lat = document.getElementById('factory_latitude')
+      map_lng = document.getElementById('factory_longitude')
+      //↑map.hidden_fieldによって生成された<input>のid
+      //ブラウザの開発者モードで確認
+      map = new google.maps.Map(document.getElementById('map'), {
+      center: myLatLng,
+      zoom: 8
+      });
 
-  <div class="field">
+    google.maps.event.addListener(map, 'click', mylistener);
+
+        //クリックしたときの処理
+      function mylistener(event){
+        //markerの位置を設定
+        //event.latLng.lat()でクリックしたところの緯度を取得
+        marker.setPosition(new google.maps.LatLng(event.latLng.lat(), event.latLng.lng()));
+        //marker設置
+        marker.setMap(map);   
+        console.log(event.latLng.lat(), event.latLng.lng());
+        map_lat.value = event.latLng.lat();
+        map_lng.value = event.latLng.lng();
+      }
+    }
+    function deleteMarker(){
+      marker.setMap(null);
+      map_lat.value = "";
+      map_lng.value = "";
+    }
+
+    //追加した関数
+    function codeAddress(){
+      geocoder = new google.maps.Geocoder()
+      let inputAddress = document.getElementById('address').value;
+      geocoder.geocode( { 
+        'address': inputAddress,
+        'region': 'jp'
+        }, function(results, status) {
+        if (status == 'OK') {
+          map.setCenter(results[0].geometry.location);
+          map_result = results[0].geometry.location;
+          map_lat.value = map_result.lat();
+          map_lng.value = map_result.lng();
+          marker.setPosition(new google.maps.LatLng(map_result.lat(), map_result.lng()));
+          marker.setMap(map);
+          console.log(map_lat.value,map_lng.value);
+        } else {
+          alert('該当する結果がありませんでした');
+          initMap();
+        }
+      });   
+    }
+  </script>
+  <script src="https://maps.googleapis.com/maps/api/js?key=<%= ENV['API_KEY'] %>&callback=initMap" async defer></script>
+
+ <div class="form-group">
     <%= form.label :image %>
-    <%= image_tag(@factory.image.url) if @factory.image && @factory.image.url %>
-    <%= form.file_field :image%>
+    <% if @factory.image? %>
+      <%= image_tag(@factory.image.url, class: "img-thumbnail") %>
+    <% end %>
+    <%= form.file_field :image, class: 'form-control-file' %>
   </div>
 
-  <div class="field">
+  <div class="form-group">
     <%= form.label :feature %>
-    <%= form.collection_check_boxes(:feature_ids, Feature.all, :id, :feature_name) %>
+    <div class="form-check">
+      <%= form.collection_check_boxes(:feature_ids, Feature.all, :id, :feature_name, class: "form-check-input") %>
+    </div>
   </div>
 
   <div class="actions">
-    <%= form.submit %>
+    <%= form.submit class: "btn btn-primary" %>
   </div>
 <% end %>
