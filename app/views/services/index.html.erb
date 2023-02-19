@@ -1,13 +1,13 @@
-<p id="notice"><%= notice %></p>
+<p><%= notice %></p>
 
-<h1>サービス内容一覧</h1>
+<h1 class="my-4">サービス内容一覧</h1>
 
-<table>
+<table class="table table-striped">
   <thead>
     <tr>
       <th>Service_name</th>
-      <th>price</th>
-      <th>content</th>
+      <th>Price</th>
+      <th>Content</th>
       <th colspan="3"></th>
     </tr>
   </thead>
@@ -15,14 +15,14 @@
   <tbody>
     <% @services.each do |service| %>
       <tr>
-        <td><%= service.service_name %>
-        <td><%= service.price %>
-        <td><%= service.content %>
+        <td><%= service.service_name %></td>
+        <td><%= service.price %></td>
+        <td><%= service.content %></td>
         <% if @service.present? %>
-        <td><%= link_to '詳細', factory_service_path(@service.factory_id,@service) %></td>
+        <td><%= link_to '詳細', factory_service_path(@service.factory_id,@service), class: 'btn btn-outline-secondary btn-sm' %></td>
         <% end %>
-        <td><%= link_to '編集', edit_factory_service_path(@factory, service) %></td>
-        <td><%= link_to '削除', factory_service_path(@factory, service), method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to '編集', edit_factory_service_path(@factory, service), class: 'btn btn-outline-primary btn-sm' %></td>
+        <td><%= link_to '削除', factory_service_path(@factory, service), method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-outline-danger btn-sm' %></td>
       </tr>
     <% end %>
   </tbody>
@@ -30,4 +30,4 @@
 
 <br>
 
-<%= link_to 'サービス内容新規登録', new_factory_service_path %>
+<%= link_to 'サービス内容新規登録', new_factory_service_path, class: 'btn btn-outline-primary' %>

@@ -1,6 +1,12 @@
-<h1>Editing Service</h1>
+<h1>サービス内容編集</h1>
 
-<%= render 'form', service: @service %>
+<div class="row">
+  <div class="col-md-6 offset-md-3">
 
-<%= link_to '詳細', factory_service_path(@service) %> |
-<%= link_to '戻る', factory_services_path %>
+    <%= render 'form', service: @service %>
+    <br>
+    <%= link_to '詳細', factory_service_path(@service), class: 'btn btn-outline-info mr-2' %> 
+    <%= link_to '戻る', factory_services_path, class: 'btn btn-outline-secondary' %>
+
+  </div>
+</div>
