@@ -19,10 +19,10 @@
         <td><%= service.price %>
         <td><%= service.content %>
         <% if @service.present? %>
-        <td><%= link_to 'Show', factory_service_path(@service.factory_id,@service) %></td>
+        <td><%= link_to '詳細', factory_service_path(@service.factory_id,@service) %></td>
         <% end %>
-        <td><%= link_to 'Edit', edit_factory_service_path(@factory, service) %></td>
-        <td><%= link_to 'Destroy', factory_service_path(@factory, service), method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to '編集', edit_factory_service_path(@factory, service) %></td>
+        <td><%= link_to '削除', factory_service_path(@factory, service), method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
   </tbody>
@@ -30,4 +30,4 @@
 
 <br>
 
-<%= link_to 'New Service', new_factory_service_path %>
+<%= link_to 'サービス内容新規登録', new_factory_service_path %>
