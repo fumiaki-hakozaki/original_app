@@ -10,6 +10,7 @@ class ServicesController < ApplicationController
 
   # GET /services/1 or /services/1.json
   def show
+    @factory = @service.factory
   end
 
   # GET /services/new

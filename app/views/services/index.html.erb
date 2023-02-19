@@ -1,6 +1,6 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Services</h1>
+<h1>サービス内容一覧</h1>
 
 <table>
   <thead>
@@ -18,7 +18,9 @@
         <td><%= service.service_name %>
         <td><%= service.price %>
         <td><%= service.content %>
-        <td><%= link_to 'Show', factory_services_path %></td>
+        <% if @service.present? %>
+        <td><%= link_to 'Show', factory_service_path(@service.factory_id,@service) %></td>
+        <% end %>
         <td><%= link_to 'Edit', edit_factory_service_path(@factory, service) %></td>
         <td><%= link_to 'Destroy', factory_service_path(@factory, service), method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
