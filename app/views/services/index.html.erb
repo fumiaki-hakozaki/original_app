@@ -19,8 +19,8 @@
         <td><%= service.price %>
         <td><%= service.content %>
         <td><%= link_to 'Show', factory_services_path %></td>
-        <td><%= link_to 'Edit', edit_service_path(service) %></td>
-        <td><%= link_to 'Destroy', service, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to 'Edit', edit_factory_service_path(@factory, service) %></td>
+        <td><%= link_to 'Destroy', factory_service_path(@factory, service), method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
   </tbody>
