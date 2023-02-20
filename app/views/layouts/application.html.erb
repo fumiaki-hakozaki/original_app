@@ -20,6 +20,9 @@
                   <%= link_to 'マイページ', user_path(current_user.id), class: "nav-link" %>
                 </li>
                 <li class="nav-item">
+                  <%= link_to '工場一覧', factories_path, class: "nav-link" %>
+                </li>
+                <li class="nav-item">
                   <%= link_to 'ログアウト', destroy_user_session_path, method: :delete, class: "nav-link" %>
                 </li>
                   <% if current_user.admin? %>
