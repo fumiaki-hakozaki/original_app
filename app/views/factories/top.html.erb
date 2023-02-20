@@ -1,20 +1,46 @@
-<h1>Factory#top</h1>
+<div class=" mt-5 texts-wrapper">
+  <div class="contents-title text-center">
+    <div class="card">
+      <%= image_tag "car-back.png", class: "card-img" %>
+      <div class="card-img-overlay">
+        <div data-aos="fade-up">
+          <%= image_tag 'logo.png', size: '250x200' %>
+          <p class="card-text"></p>
+          <h4>< <a id="color_custom">S</a>EARCH  <a id="color_custom">MA</a>INTENANCE <a id="color_custom">SH</a>OP ></h4>
+          <h4 class="card-text">SMASHとは？</h4>
+          <h5 class="card-text">自動車の整備工場を探すアプリになります。</h5>
+          <h5 class="card-text">地方では都市部の様に交通インフラが整っておらず、車社会の地域がほとんどです。</h5>
+          <h5 class="card-text">ディーラー以外にも身近にクオリティが高く、コスパや評判の良い修理工場を探してみませんか？</h5>
+          <h4 class="card-text">【使用方法】</h4>
+          <h5 class="card-text">ログインをしてユーザー登録をしましょう</h5>
+          <h5 class="card-text">名前や住所、カテゴリーから工場を検索</h5>
+          <h5 class="card-text">検索結果から気になる工場を選択</h5>
+          <h5 class="card-text">工場をお気に入りにすることができ、工場に対して口コミもできます。</h5>
+          <h5 class="card-text">マイページでお気に入りの工場をたくさん登録しましょう♪</h5>
+        </div>
+      </div>
+    </div>
 
-<%= search_form_for @factories_search, url: search_factories_path do |f| %>
-    <p><%= f.label :feature, "カテゴリーをクリックして検索してください" %></p>
-    <h4>カテゴリー</h4>
-  <% Feature.all.each do |feature| %>
-    <label><%= feature.feature_name %></label>
-    <%= f.check_box :features_id_eq_any, { multiple: true, checked: feature[:checked], disabled: feature[:disabled], include_hidden: false }, feature[:id] %>
-  <% end %>
-    <p><%= f.submit "検索", class: "search_btn" %></P>
-<% end %>
-
-  <h4> 住所・名前から工場を検索！ </h4>
-<%= search_form_for @factories_search, url: search_factories_path do |f| %>
-  <%= f.label :factory_name_or_address_cont, "工場名・住所のキーワード検索" %>
-  <%= f.search_field :factory_name_or_address_cont, placeholder:"例）DICオートサービス" %>
-  <%= f.submit "検索",class: "search_btn" %>
-<% end %>
+    <div class="shadow p-3 mb-5 bg-white rounded">
+        <h4> 住所・名前から工場を検索！ </h4>
+      <%= search_form_for @factories_search, url: search_factories_path do |f| %>
+        <%= f.label :factory_name_or_address_cont, "工場名・住所のキーワード検索" %>
+        <%= f.search_field :factory_name_or_address_cont, placeholder:"例）DICオートサービス" %>
+        <%= f.submit "検索",class: "search_btn" %>
+      <% end %>
+    </div>
+    <div class="shadow p-3 mb-5 bg-white rounded">
+      <%= search_form_for @factories_search, url: search_factories_path do |f| %>
+        <p><%= f.label :feature, "カテゴリーをクリックして検索してください" %></p>
+        <h4>カテゴリー</h4>
+        <% Feature.all.each do |feature| %>
+          <label><%= feature.feature_name %></label>
+          <%= f.check_box :features_id_eq_any, { multiple: true, checked: feature[:checked], disabled: feature[:disabled], include_hidden: false }, feature[:id] %>
+        <% end %>
+          <p><%= f.submit "検索", class: "search_btn" %></P>
+      <% end %>
+    </div>
+  </div>
+</div>
 
 
