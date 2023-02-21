@@ -97,7 +97,7 @@
     <% end %>
 
     <% if user_signed_in? %>
-      <%= link_to 'Back', factories_path, class: 'btn btn-outline-secondary' %>
+      <%= link_to '戻る', factories_path, class: 'btn btn-outline-secondary' %>
     <% end %>
     <% if current_user.admin? %>
       <%= link_to 'サービス登録', new_factory_service_path(@factory), class: 'btn btn-outline-success' %>
