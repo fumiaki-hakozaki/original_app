@@ -1,5 +1,15 @@
-<h1>工場新規登録</h1>
+<div class="container">
+  <div class="row">
+    <div class="col-md-12">
+      <h1>工場新規登録</h1>
+    </div>
+  </div>
 
 <%= render 'form', factory: @factory %>
 
-<%= link_to 'Back', factories_path %>
+  <div class="row mt-3">
+    <div class="col-md-12">
+      <%= link_to '戻る', factories_path, class: "btn btn-outline-secondary" %>
+    </div>
+  </div>
+</div>

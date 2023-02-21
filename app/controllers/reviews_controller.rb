@@ -31,7 +31,7 @@ class ReviewsController < ApplicationController
     
     respond_to do |format|
       if @review.save
-        format.html { redirect_to factory_path(params[:factory_id]), notice: "Review was successfully created." }
+        format.html { redirect_to factory_path(params[:factory_id]), notice: "口コミを作成しました！" }
         format.json { render :show, status: :created, location: @review }
       else
         format.html { render :new, status: :unprocessable_entity }
@@ -44,7 +44,7 @@ class ReviewsController < ApplicationController
   def update
     respond_to do |format|
       if @review.update(review_params)
-        format.html { redirect_to factory_path(params[:factory_id]), notice: "Revfactorywas successfully updated." }
+        format.html { redirect_to factory_path(params[:factory_id]), notice: "口コミを編集しました！" }
         format.json { render :show, status: :ok, location: @review }
       else
         format.html { render :edit, status: :unprocessable_entity }
@@ -58,7 +58,7 @@ class ReviewsController < ApplicationController
     @review.destroy
 
     respond_to do |format|
-      format.html { redirect_to factory_path(params[:factory_id]), notice: "Review was successfully destroyed." }
+      format.html { redirect_to factory_path(params[:factory_id]), notice: "口コミを削除しました！" }
       format.json { head :no_content }
     end
   end

@@ -5,12 +5,12 @@
 
     <div class="mb3">
       <%= f.label :name %><br />
-      <%= f.text_field :name, class:"form-control"  %>
+      <%= f.text_field :name, placeholder:"例)山田  太郎",class:"form-control"  %>
     </div>
 
     <div class="mb3">
       <%= f.label :email %><br />
-      <%= f.email_field :email, autofocus: true, autocomplete: "email", class:"form-control"  %>
+      <%= f.email_field :email, autofocus: true, autocomplete: "email", placeholder:"例)example@example.com", class:"form-control"  %>
     </div>
 
     <div class="mb3">
@@ -18,12 +18,12 @@
       <% if @minimum_password_length %>
       <em><%= t('devise.shared.minimum_password_length', count: @minimum_password_length) %></em>
       <% end %><br />
-      <%= f.password_field :password, autocomplete: "new-password", class:"form-control"  %>
+      <%= f.password_field :password, autocomplete: "new-password", placeholder:"パスワードを入力してください", class:"form-control"  %>
     </div>
 
     <div class="mb3">
       <%= f.label :password_confirmation %><br />
-      <%= f.password_field :password_confirmation, autocomplete: "new-password", class:"form-control" %>
+      <%= f.password_field :password_confirmation, autocomplete: "new-password", placeholder:"もう一度パスワードを入力してください", class:"form-control" %>
     </div>
 
     <div class="actions">

@@ -17,7 +17,7 @@
           <td><%= link_to '詳細', feature, class: "btn btn-outline-secondary" %></td>
           <% if current_user.admin? %>
             <td><%= link_to '編集', edit_feature_path(feature), class: "btn btn-outline-primary" %></td>
-            <td><%= link_to '削除', feature, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-outline-danger" %></td>
+            <td><%= link_to '削除', feature, method: :delete, data: { confirm: '本当によろしいですか?' }, class: "btn btn-outline-danger" %></td>
           <% end %>
         </tr>
       <% end %>

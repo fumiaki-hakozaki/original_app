@@ -55,7 +55,7 @@ class FactoriesController < ApplicationController
     end
     respond_to do |format|
       if @factory.save
-        format.html { redirect_to factory_url(@factory), notice: "Factory was successfully created." }
+        format.html { redirect_to factory_url(@factory), notice: "工場が作成されました！" }
         format.json { render :show, status: :created, location: @factory }
       else
         format.html { render :new, status: :unprocessable_entity }
@@ -68,7 +68,7 @@ class FactoriesController < ApplicationController
   def update
     respond_to do |format|
       if @factory.update(factory_params)
-        format.html { redirect_to factory_url(@factory), notice: "Factory was successfully updated." }
+        format.html { redirect_to factory_url(@factory), notice: "工場の内容を編集しました！" }
         format.json { render :show, status: :ok, location: @factory }
       else
         format.html { render :edit, status: :unprocessable_entity }
@@ -82,7 +82,7 @@ class FactoriesController < ApplicationController
     @factory.destroy
 
     respond_to do |format|
-      format.html { redirect_to factories_url, notice: "Factory was successfully destroyed." }
+      format.html { redirect_to factories_url, notice: "工場を削除しました！" }
       format.json { head :no_content }
     end
   end

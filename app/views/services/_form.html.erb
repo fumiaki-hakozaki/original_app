@@ -1,4 +1,6 @@
-<%= form_with(model: [@factory,@service] ,url: factory_services_path, local: true ) do |form| %>
+<%= form_with(model: [@factory, @service], url: @service.new_record? ? factory_services_path(@factory) : factory_service_path(@factory, @service), local: true, method: @service.new_record? ? :post : :patch) do |form| %>
+
+
   <% if service.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(service.errors.count, "error") %> prohibited this service from being saved:</h2>
@@ -27,6 +29,6 @@
   </div>
 
   <div class="form-actions">
-    <%= form.submit "Save", class: "btn btn-primary" %>
+    <%= form.submit "登録", class: "btn btn-primary" %>
   </div>
 <% end %>
