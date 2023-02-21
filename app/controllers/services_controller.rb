@@ -54,10 +54,10 @@ class ServicesController < ApplicationController
 
   # DELETE /services/1 or /services/1.json
   def destroy
+    set_factory
     @service.destroy
-
     respond_to do |format|
-      format.html { redirect_to services_url, notice: "Service was successfully destroyed." }
+      format.html { redirect_to factory_path(@factory), notice: "Service was successfully destroyed." }
       format.json { head :no_content }
     end
   end
