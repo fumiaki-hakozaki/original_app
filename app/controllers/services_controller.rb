@@ -16,12 +16,12 @@ class ServicesController < ApplicationController
   # GET /services/new
   def new
     @factory = Factory.find(params[:factory_id])
-    @service = Service.new
+    @service = @factory.services.new
   end
 
   # GET /services/1/edit
   def edit
-    @factory = @service.factory
+     @factory = Factory.find_by(id: params[:factory_id])
   end
 
   # POST /services or /services.json
@@ -72,7 +72,10 @@ class ServicesController < ApplicationController
       if @service.present?
         @factory = @service.factory
       else
-        @factory = Factory.find(params[:factory_id])
+        @factory = Factory.find_by(id: params[:factory_id])
+      end
+      if @factory.nil?
+        raise ActiveRecord::RecordNotFound, "Couldn't find Factory with 'id'=#{params[:factory_id]}"
       end
     end
 
