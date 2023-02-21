@@ -34,6 +34,7 @@
   </div>
 
   <% if current_user.admin? %>
-  <%= link_to '工場新規登録', new_factory_path, class: 'btn btn-outline-success' %>
+    <%= link_to '工場新規登録', new_factory_path, class: 'btn btn-outline-success' %>
+    <%= link_to '特徴(カテゴリー)新規登録', new_feature_path, class: 'btn btn-outline-success' %>
   <% end %>
 </div>
