@@ -20,3 +20,17 @@ ja:
         password: パスワード
         password_confirmation: 確認用パスワード
         remember_me: ログインを記憶
+      factory:
+          factory_name: 工場名
+          summary: 概要
+          address: 住所
+          latitude: 経度
+          longitude: 緯度
+          image: 画像
+      review:
+          content: 口コミ
+          image: 画像
+      service:
+          service_name: サービス名
+          price: 金額
+          content: 備考

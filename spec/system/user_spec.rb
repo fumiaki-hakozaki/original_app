@@ -10,7 +10,7 @@ RSpec.describe 'ユーザー管理機能', type: :system do
     context '正しいパスワードが入力された場合' do
       it 'ログインできること' do
         visit new_user_session_path
-        fill_in 'user[email]', with: 'example@example.com'
+        fill_in 'user[email]', with: 'tokyo@example.com'
         fill_in 'user[password]', with: 'password'
         click_on 'commit'
         #binding.pry
