@@ -3,9 +3,14 @@ class ServicesController < ApplicationController
   before_action :set_factory, only: %i[ edit update ]
 
   # GET /services or /services.json
+
   def index
-    @services = Service.all
-    set_factory
+    if params[:factory_id].present?
+      @factory = Factory.find(params[:factory_id])
+      @services = Service.where(factory_id: @factory.id)
+    else
+      @services = Service.all
+    end
   end
 
   # GET /services/1 or /services/1.json
@@ -26,16 +31,12 @@ class ServicesController < ApplicationController
 
   # POST /services or /services.json
   def create
-    factory = Factory.find(params[:factory_id])
-    @service = factory.services.build(service_params)
-    respond_to do |format|
-      if @service.save
-        format.html { redirect_to factory_service_path(factory, @service),notice: "サービス内容を作成しました！" }
-        format.json { render :show, status: :created, location: @service }
-      else
-        format.html { render :new, status: :unprocessable_entity }
-        format.json { render json: @service.errors, status: :unprocessable_entity }
-      end
+    @factory = Factory.find(params[:factory_id])
+    @service = @factory.services.build(service_params)
+    if @service.save
+    redirect_to factory_services_path(@factory), notice: "サービスを登録しました"
+    else
+      render :new
     end
   end
 
@@ -81,6 +82,6 @@ class ServicesController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def service_params
-      params.require(:service).permit(:service_name, :price, :content, :id).merge(factory_id: params[:factory_id])
+       params.require(:service).permit(:service_name, :price, :content, :factory_id)
     end
 end

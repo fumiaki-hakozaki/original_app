@@ -17,6 +17,10 @@ Rails.application.routes.draw do
     post 'users/guest_admin_sign_in', to: 'users/sessions#guest_admin_sign_in'
   end
 
+  # リソースへのPOSTが完了したら、/factories/:factory_id/services にリダイレクトするようにする
+  post '/factories/:factory_id/services', to: 'services#create', as: 'services_factory'
+
+
   resources :favorites, only: [:create, :destroy]
   resources :features
   resources :factories do
