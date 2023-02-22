@@ -1,8 +1,13 @@
 ja:
   activerecord:
     models:
-      blog: ブログ
       user: ユーザー
+      factory: 工場
+      review: コメント
+      favorite: お気に入り
+      service: サービス
+      feature: 特徴
+      factory_feature: 中間テーブル
     attributes:
       blog:
         title: タイトル
