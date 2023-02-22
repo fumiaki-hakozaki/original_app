@@ -11,18 +11,18 @@
   <% end %>
 
   <div class="form-group">
-    <%= form.label :name %>
-    <%= form.text_field :factory_name, class: 'form-control' %>
+    <%= form.label :工場名 %>
+    <%= form.text_field :factory_name, placeholder:"例)DIC工場", class: 'form-control' %>
   </div>
 
   <div class="form-group">
-    <%= form.label :summary %>
-    <%= form.text_field :summary, class: 'form-control' %>
+    <%= form.label :概要 %>
+    <%= form.text_field :summary, placeholder:"例)地域密着、最新設備あります等", class: 'form-control' %>
   </div>
 
   <div class="form-group">
-    <%= form.label :address %>
-    <%= form.text_field :address, class: 'form-control' %>
+    <%= form.label :住所 %>
+    <%= form.text_field :address, placeholder:"例)〇〇県〇〇市〇〇町12-34", class: 'form-control' %>
   </div>
 
   <div class="form-group">
@@ -30,7 +30,7 @@
     <%= form.hidden_field :longitude %>
   </div>
 
-  <input id="address" type="textbox" value="GeekSalon">
+  <input id="address" type="textbox" value="住所入力してください">
   <input type="button" value="検索" onclick="codeAddress()">
   <p>マーカーをドラック＆ドロップで位置の調整ができます。<p>
   <div id='map'></div>
