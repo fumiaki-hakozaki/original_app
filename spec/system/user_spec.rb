@@ -30,7 +30,7 @@ RSpec.describe 'ユーザー管理機能', type: :system do
     end
 
     context '管理者権限を持ったユーザーログインした場合' do
-      it '管理者画面のリンクが出ること' do
+      it '管理者画面のリンクが出て管理者画面に行く' do
         visit new_user_session_path
         fill_in 'user[email]', with: 'tokyo@example.com'
         fill_in 'user[password]', with: 'password'

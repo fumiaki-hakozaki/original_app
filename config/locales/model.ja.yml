@@ -34,3 +34,5 @@ ja:
           service_name: サービス名
           price: 金額
           content: 備考
+      feature:
+          feature_name: 特徴名(カテゴリー名)
