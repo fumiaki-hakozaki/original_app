@@ -8,5 +8,11 @@ RSpec.describe Feature, type: :model do
         expect(feature).not_to be_valid
       end
     end
+    context 'カテゴリー情報が正しく入力される' do
+      it 'バリデーションが通る' do
+        feature = Feature.new(feature_name:'薪割り')
+        expect(feature).to be_valid
+      end
+    end
   end
 end
