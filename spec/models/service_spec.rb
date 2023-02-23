@@ -23,5 +23,12 @@ RSpec.describe Service, type: :model do
         expect(service).not_to be_valid
       end
     end
+    context 'サービス情報が正しく入力される' do
+      it 'バリデーションが通る' do
+        factory = FactoryBot.create(:factory)
+        service = Service.new(service_name:'サービス',price:'1000',content:'合格',factory_id:'1')
+        expect(service).to be_valid
+      end
+    end
   end
 end

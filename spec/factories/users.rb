@@ -22,4 +22,11 @@ FactoryBot.define do
     profile { "東京プロフィール" }
     admin { true }
   end
+
+  factory :four_user , class:User do
+    name { Faker::Name.name }
+    email { Faker::Internet.unique.email }
+    password { 'password' }
+    password_confirmation { 'password' }
+  end
 end

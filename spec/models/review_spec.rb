@@ -8,5 +8,13 @@ RSpec.describe Review, type: :model do
         expect(review).not_to be_valid
       end
     end
+    context '口コミを正しく入力した場合' do
+      it 'バリデエーションが通る' do
+        user = FactoryBot.create(:user, email: 'new1@example.com') # ここで新しいメールアドレスを持つユーザーを作成
+        factory = FactoryBot.create(:factory)
+        review = FactoryBot.build(:review, user_id: user.id, factory_id: factory.id) # 新しく作成したユーザーを使用
+        expect(review).to be_valid
+      end
+    end
   end
 end
