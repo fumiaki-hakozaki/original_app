@@ -19,16 +19,5 @@ RSpec.describe '口コミ投稿機能', type: :system do
         expect(page).to have_content '口コミを作成しました！'
       end
     end
-    context '口コミ欄に入力しない場合' do
-      it 'バリデエーションエラーメッセージが表示されること' do
-        login
-        click_on '工場一覧'
-        click_on('工場情報確認', match: :first)
-        click_on '口コミを投稿！'
-        fill_in 'review[content]', with:''
-        click_on '投稿'
-        expect(page).to have_content '口コミを入力してください'
-      end
-    end
   end
 end

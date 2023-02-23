@@ -29,32 +29,6 @@ RSpec.describe '工場機能テスト', type: :system do
       end
     end
 
-    context '工場名を入れないといバリデーションかかる' do
-      it 'バリデーションメッセージが表示される' do
-        login
-        click_on '工場一覧'
-        click_on '工場新規登録'
-        fill_in 'factory_factory_name', with: ''
-        fill_in 'factory_address', with: '東京都'
-        fill_in 'factory_summary', with: 'DIC工場は綺麗'
-        click_button '登録する'
-        expect(page).to have_content '工場名を入力してください'
-      end
-    end
-
-    context '住所を入れないとバリデーションがかかる' do
-      it 'バリデーションメッセージが表示される' do
-        login
-        click_on '工場一覧'
-        click_on '工場新規登録'
-        fill_in 'factory_factory_name', with: 'DIC工場'
-        fill_in 'factory_address', with: ''
-        fill_in 'factory_summary', with: 'DIC工場は綺麗'
-        click_button '登録する'
-        expect(page).to have_content '住所を入力してください'
-      end
-    end
-
     context '工場検索機能' do
       it 'カテゴリーにチェックし検索すると関連の工場が表示される' do
         login

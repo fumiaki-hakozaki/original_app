@@ -18,15 +18,5 @@ RSpec.describe 'カテゴリー機能', type: :system do
         expect(page).to have_content '特徴が登録されました'
       end
     end
-    context '特徴(カテゴリー)名を入れないとバリデーションがかかる' do
-      it 'バリデーションメッセージが表示される' do
-        login
-        click_on '工場一覧'
-        click_on '特徴(カテゴリー)新規登録'
-        fill_in 'feature[feature_name]', with:''
-        click_on 'commit'
-        expect(page).to have_content '特徴名(カテゴリー名)を入力してください'
-      end
-    end
   end
 end

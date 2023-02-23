@@ -1,5 +1,19 @@
 require 'rails_helper'
 
 RSpec.describe Factory, type: :model do
-  pending "add some examples to (or delete) #{__FILE__}"
+  describe 'ファクトリーモデル機能' do
+    context '工場名を入れないといバリデーションかかる' do
+      it 'バリデーションメッセージが表示される' do
+        factory = Factory.new(factory_name:'',summary:'卒業課題',address:'失敗テスト',)
+        expect(factory).not_to be_valid
+      end
+    end
+
+        context '住所を入れないとバリデーションがかかる' do
+      it 'バリデーションメッセージが表示される' do
+        factory = Factory.new(factory_name:'DICオートサービス',summary:'卒業課題',address:'',)
+        expect(factory).not_to be_valid
+      end
+    end
+  end
 end
