@@ -26,7 +26,7 @@
       <%= search_form_for @factories_search, url: search_factories_path do |f| %>
         <%= f.label :factory_name_or_address_cont, "工場名・住所のキーワード検索" %>
         <%= f.search_field :factory_name_or_address_cont, placeholder:"例）DICオートサービス" %>
-        <%= f.submit "検索",class: "search_btn" %>
+        <%= f.submit "検索",class: "search_btn",id: "search_btn_1" %>
       <% end %>
     </div>
     <div class="shadow p-3 mb-5 bg-white rounded">
@@ -37,7 +37,7 @@
           <label><%= feature.feature_name %></label>
           <%= f.check_box :features_id_eq_any, { multiple: true, checked: feature[:checked], disabled: feature[:disabled], include_hidden: false }, feature[:id] %>
         <% end %>
-          <p><%= f.submit "検索", class: "search_btn" %></P>
+          <p><%= f.submit "検索", class: "search_btn",id: "search_btn_2" %></P>
       <% end %>
     </div>
   </div>
