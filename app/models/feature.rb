@@ -1,5 +1,5 @@
 class Feature < ApplicationRecord
   has_many :factory_features
   has_many :factories, through: :factory_features, source: :factory
-  validates :feature_name, presence: true
+  validates :feature_name, presence: true, length: { maximum: 20 }
 end

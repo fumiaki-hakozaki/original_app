@@ -10,4 +10,6 @@ class Factory < ApplicationRecord
 
   validates :factory_name, presence: true
   validates :address, presence: true
+  validates :summary, length: { maximum: 255 }
+
 end
