@@ -10,18 +10,26 @@
       <% end %>
 
       <% if @favorite.present? %>
+      <div class="d-flex">
         <%= link_to 'お気に入り解除する', favorite_path(id: @favorite.id), method: :delete, class: 'btn btn-outline-danger mt-3' %>
+      </div>
       <% else %>
+      <div class="d-flex">
         <%= link_to 'お気に入りする', favorites_path(factory_id: @factory.id), method: :post, class: 'btn btn-outline-primary mt-3' %>
+      </div>
       <% end %>
+      
     </div>
     <div class="col-sm-6">
-  <p><strong>概要:</strong> <%= @factory.summary %></p>
+
+  <p><strong>概要:</strong> <span style="font-size: 1.2em;"><%= @factory.summary %></span></p>
 
   <p><strong>特徴:</strong>
-    <% @factory.features.each do |feature| %>
-      <span class="badge badge-pill badge-warning"><%= feature.feature_name %></span>
-    <% end %>
+    <div class="d-flex flex-wrap">
+      <% @factory.features.each do |feature| %>
+        <span class="badge badge-warning p-2 mr-3 mb-2"><%= feature.feature_name %></span>
+      <% end %>
+    </div>
   </p>
 
   <p><strong>サービス:</strong></p>
