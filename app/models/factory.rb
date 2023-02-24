@@ -8,8 +8,8 @@ class Factory < ApplicationRecord
 
   mount_uploader :image, ImageUploader
 
-  validates :factory_name, presence: true
-  validates :address, presence: true
+  validates :factory_name, presence: true, length: { maximum: 100 }
+  validates :address, presence: true, length: { maximum: 100 }
   validates :summary, length: { maximum: 255 }
 
 end
