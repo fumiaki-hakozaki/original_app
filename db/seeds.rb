@@ -142,10 +142,27 @@
   image: 'https://example.com/factory.jpg'
 )
 
+@factory14 = Factory.create!(
+  factory_name: '大草自動車整備工場',
+  summary: 'お気軽にお立ち寄りください。',
+  address: '長崎県諫早市多良見町元釜１−２',
+  latitude: 32.8566539,
+  longitude: 129.9329885,
+  image: 'https://example.com/factory.jpg'
+)
+
+@factory15 = Factory.create!(
+  factory_name: '山口自動車整備工場',
+  summary: 'お気軽にお立ち寄りください。',
+  address: '長崎県諫早市高来町東平原６１０−１',
+  latitude: 	32.915325,
+  longitude: 130.1367894,
+  image: 'https://example.com/factory.jpg'
+)
 
 # features
 Feature.create!(
-  feature_name: '点検'
+  feature_name: '点検、車検整備'
 )
 
 Feature.create!(
@@ -170,19 +187,58 @@ Feature.create!(
   feature_name: 'バッテリー交換'
 )
 Feature.create!(
-  feature_name: '車検整備'
-)
-Feature.create!(
   feature_name: 'エキゾーストシステム修理'
 )
 Feature.create!(
   feature_name: 'サスペンション調整'
 )
 
+Feature.create!(
+  feature_name: '冷却水交換'
+)
+
+Feature.create!(
+  feature_name: 'エンジンオーバーホール'
+)
+
+Feature.create!(
+  feature_name: 'フューエルシステム清掃'
+)
+
+Feature.create!(
+  feature_name: 'ベルト交換'
+)
+
+Feature.create!(
+  feature_name: 'エアフィルター交換'
+)
+
+Feature.create!(
+  feature_name: 'ブレーキパッド研磨'
+)
+
+Feature.create!(
+  feature_name: 'ブレーキオーバーホール'
+)
+
+Feature.create!(
+  feature_name: 'ヒューズ交換'
+)
+
+Feature.create!(
+  feature_name: 'ステアリング調整'
+)
+
+Feature.create!(
+  feature_name: 'ドライブシャフト交換'
+)
+
 # factory_features
 Factory.all.each do |factory|
-  feature_ids = Feature.pluck(:id).sample(3)
+  # ランダムな数のフィーチャーを選択
+  feature_ids = Feature.pluck(:id).sample(rand(3..5))
   feature_ids.each do |feature_id|
+    # 選択されたフィーチャーと工場を紐づけるFactoryFeatureを作成
     FactoryFeature.create!(
       factory_id: factory.id,
       feature_id: feature_id
@@ -317,6 +373,97 @@ Review.create!(
   factory_id: @factory2.id
 )
 
+Review.create!(
+content: 'この工場は、作業が丁寧でとても安心できるお店です。',
+image: 'https://example.com/image6.jpg',
+user_id: @user1.id,
+factory_id: @factory3.id
+)
+
+Review.create!(
+content: 'この工場は、対応が親切で、アフターサポートもしっかりしています。',
+image: 'https://example.com/image7.jpg',
+user_id: @user3.id,
+factory_id: @factory4.id
+)
+
+Review.create!(
+content: 'この工場は、お店の雰囲気が居心地が良く、作業も早くて満足できました。',
+image: 'https://example.com/image8.jpg',
+user_id: @user2.id,
+factory_id: @factory5.id
+)
+
+Review.create!(
+content: 'この工場は、オーナーの方が常に気配りしてくださり、とても丁寧な対応をしてくれます。',
+image: 'https://example.com/image9.jpg',
+user_id: @user4.id,
+factory_id: @factory6.id
+)
+
+Review.create!(
+content: 'この工場は、技術力が高く、何でも相談できるお店です。',
+image: 'https://example.com/image10.jpg',
+user_id: @user1.id,
+factory_id: @factory7.id
+)
+
+Review.create!(
+content: 'この工場は、とても親切で、作業の進行状況も丁寧に教えてくださいます。',
+image: 'https://example.com/image11.jpg',
+user_id: @user3.id,
+factory_id: @factory8.id
+)
+
+Review.create!(
+content: 'この工場は、作業も早くて安心できるお店です。',
+image: 'https://example.com/image12.jpg',
+user_id: @user2.id,
+factory_id: @factory9.id
+)
+
+Review.create!(
+content: 'この工場は、スタッフの方々がとても親切で、安心してお任せできるお店です。',
+image: 'https://example.com/image13.jpg',
+user_id: @user4.id,
+factory_id: @factory10.id
+)
+
+Review.create!(
+content: 'この工場は、作業の説明が丁寧で、安心して任せられます。',
+image: 'https://example.com/image14.jpg',
+user_id: @user1.id,
+factory_id: @factory11.id
+)
+
+Review.create!(
+content: 'この工場は、予算内で最善の対応をしてくださり、とても助かりました。',
+image: 'https://example.com/image15.jpg',
+user_id: @user3.id,
+factory_id: @factory12.id
+)
+
+Review.create!(
+content: 'この工場は、予算内で最善の対応をしてくださり、とても助かりました。',
+image: 'https://example.com/image15.jpg',
+user_id: @user1.id,
+factory_id: @factory13.id
+)
+
+Review.create!(
+content: 'この工場は、作業の説明が丁寧で、安心して任せられます。',
+image: 'https://example.com/image14.jpg',
+user_id: @user1.id,
+factory_id: @factory14.id
+)
+
+Review.create!(
+content: 'この工場は、作業の説明が丁寧で、安心して任せられます。',
+image: 'https://example.com/image14.jpg',
+user_id: @user1.id,
+factory_id: @factory15.id
+)
+
 #services
 Service.create!(
   service_name: 'オイル交換',
@@ -385,5 +532,96 @@ Service.create!(
   service_name: 'サスペンション交換',
   price: 30000,
   content: '車のサスペンションを交換します。',
+  factory_id: @factory9.id
+)
+
+Service.create!(
+  service_name: 'ホイールアライメント調整',
+  price: 10000,
+  content: '車のホイールアライメントを調整します。',
+  factory_id: @factory1.id
+)
+
+Service.create!(
+  service_name: 'エキゾーストシステム修理',
+  price: 20000,
+  content: '車のエキゾーストシステムを修理します。',
+  factory_id: @factory2.id
+)
+
+Service.create!(
+  service_name: 'クーラント交換',
+  price: 10000,
+  content: '車のクーラントを交換します。',
+  factory_id: @factory3.id
+)
+
+Service.create!(
+  service_name: 'タイミングベルト交換',
+  price: 30000,
+  content: '車のタイミングベルトを交換します。',
+  factory_id: @factory4.id
+)
+
+Service.create!(
+  service_name: 'フューエルフィルター交換',
+  price: 5000,
+  content: '車のフューエルフィルターを交換します。',
+  factory_id: @factory5.id
+)
+
+Service.create!(
+  service_name: 'エアフィルター交換',
+  price: 5000,
+  content: '車のエアフィルターを交換します。',
+  factory_id: @factory6.id
+)
+
+Service.create!(
+  service_name: 'ブレーキフルード交換',
+  price: 8000,
+  content: '車のブレーキフルードを交換します。',
+  factory_id: @factory7.id
+)
+
+Service.create!(
+  service_name: 'ディーラー車検代行',
+  price: 20000,
+  content: 'ディーラーでの車検を代行します。',
+  factory_id: @factory8.id
+)
+
+Service.create!(
+  service_name: 'ヒーターコア交換',
+  price: 15000,
+  content: '車のヒーターコアを交換します。',
+  factory_id: @factory9.id
+)
+
+Service.create!(
+  service_name: 'オルタネーター交換',
+  price: 40000,
+  content: '車のオルタネーターを交換します。',
+  factory_id: @factory10.id
+)
+
+Service.create!(
+  service_name: 'ディーラー車検代行',
+  price: 20000,
+  content: 'ディーラーでの車検を代行します。',
+  factory_id: @factory11.id
+)
+
+Service.create!(
+  service_name: 'オルタネーター交換',
+  price: 40000,
+  content: '車のオルタネーターを交換します。',
+  factory_id: @factory12.id
+)
+
+Service.create!(
+  service_name: 'ヒーターコア交換',
+  price: 15000,
+  content: '車のヒーターコアを交換します。',
   factory_id: @factory9.id
 )

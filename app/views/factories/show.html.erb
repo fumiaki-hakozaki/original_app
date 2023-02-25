@@ -4,7 +4,7 @@
       <h3>工場名: <%= @factory.factory_name %></h3>
     
       <% if @factory.image.present? %>
-        <%= image_tag @factory.image.url, class: 'img-fluid rounded' %>
+        <%= image_tag @factory.image.url, class: 'img-fluid rounded',style: 'width: 500px; height: 400px;' %>
       <% else %>
         <%= image_tag 'default-1.jpg', class: 'img-fluid rounded' %>
       <% end %>

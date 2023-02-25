@@ -33,11 +33,21 @@
       <%= search_form_for @factories_search, url: search_factories_path do |f| %>
         <p><%= f.label :feature, "カテゴリーをクリックして検索してください" %></p>
         <h4>カテゴリー</h4>
-        <% Feature.all.each do |feature| %>
-          <label><%= feature.feature_name %></label>
-          <%= f.check_box :features_id_eq_any, { multiple: true, checked: feature[:checked], disabled: feature[:disabled], include_hidden: false }, feature[:id] %>
-        <% end %>
-          <p><%= f.submit "検索", class: "search_btn",id: "search_btn_2" %></P>
+        <div class="row">
+          <% Feature.all.each_slice(3) do |features| %>
+            <div class="col-4">
+              <% features.each do |feature| %>
+                <div class="form-check">
+                  <%= f.check_box :features_id_eq_any, { multiple: true, checked: feature[:checked], disabled: feature[:disabled], include_hidden: false }, feature[:id], class: "form-check-input" %>
+                  <%= f.label feature[:id], class: "form-check-label" do %>
+                    <%= feature.feature_name %>
+                  <% end %>
+                </div>
+              <% end %>
+            </div>
+          <% end %>
+        </div>
+        <p><%= f.submit "検索", class: "search_btn",id: "search_btn_2" %></P>
       <% end %>
     </div>
   </div>

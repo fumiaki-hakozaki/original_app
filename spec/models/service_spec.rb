@@ -13,7 +13,6 @@ RSpec.describe Service, type: :model do
       it 'バリデーションメッセージが表示される' do
         service = Service.new(service_name:'サービス',price:'',content:'失敗テスト')
         expect(service).not_to be_valid
-
       end
     end
 
