@@ -1,7 +1,7 @@
 <%= form_with(model: factory, class: "form") do |form| %>
   <% if factory.errors.any? %>
     <div class="alert alert-danger" role="alert">
-      <h4 class="alert-heading"><%= pluralize(factory.errors.count, "error") %> prohibited this factory from being saved:</h4>
+      <h4 class="alert-heading"><%= pluralize(factory.errors.count, "件のエラー") %> の為、工場は保存出来ませんでした:</h4>
       <ul>
         <% factory.errors.full_messages.each do |msg| %>
           <li><%= msg %></li>

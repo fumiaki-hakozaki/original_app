@@ -1,7 +1,7 @@
 <%= form_with(model: feature) do |form| %>
   <% if feature.errors.any? %>
     <div id="error_explanation">
-      <h2><%= pluralize(feature.errors.count, "error") %> の為、特徴は保存出来ませんでした:</h2>
+      <h2><%= pluralize(feature.errors.count, "件のエラー") %> の為、特徴は保存出来ませんでした:</h2>
 
       <ul>
         <% feature.errors.each do |error| %>

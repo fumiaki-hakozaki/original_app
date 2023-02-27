@@ -1,7 +1,7 @@
 <%= form_with(model: [@factory, @service], url: @service.new_record? ? factory_services_url(@factory, factory_id: @factory.id) : factory_service_url(@factory, @service), local: true, method: @service.new_record? ? :post : :patch) do |form| %>
   <% if @service.errors.any? %>
     <div id="error_explanation">
-      <h2><%= pluralize(@service.errors.count, "error") %> prohibited this service from being saved:</h2>
+      <h2><%= pluralize(@service.errors.count, "件のエラー") %> の為、サービスは保存出来ませんでした:</h2>
 
       <ul>
         <% @service.errors.each do |error| %>

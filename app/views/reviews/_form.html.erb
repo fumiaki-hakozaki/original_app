@@ -1,7 +1,7 @@
 <%= form_with(model: [@factory,@review],url: factory_reviews_path, local: true, class: "form-horizontal", multipart: true ) do |form| %>
   <% if review.errors.any? %>
     <div id="error_explanation" class="alert alert-danger">
-      <h2><%= pluralize(review.errors.count, "error") %> prohibited this review from being saved:</h2>
+      <h2><%= pluralize(review.errors.count, "件のエラー") %> の為、レビューは保存出来ませんでした:</h2>
 
       <ul>
         <% review.errors.each do |error| %>
