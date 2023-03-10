@@ -2,11 +2,70 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: https://sass-lang.com/
 
-.image {
-  width: 550px;
-}
 
 #color_custom{
   color: #FF0461;
 }
 
+.top {
+  position: relative;
+  background-image: url('/assets/car-back.png');
+  background-size: cover;
+  background-position: center;
+  min-height: 80vh;
+}
+.top.card {
+  padding: 80px 0;
+}
+
+.top.card h4,
+.top.card h5 {
+  margin: 0.5rem 0;
+}
+
+/* 768px以上の画面幅 */
+@media (min-width: 768px) {
+  .texts-wrapper {
+    margin-top: 200px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    z-index: 1;
+  }
+}
+h4, h5 {
+  font-size: 1.5rem;
+  line-height: 2rem;
+  margin: 1rem 0;
+  text-align: center;
+}
+
+/* 576px以上の画面幅 */
+@media (min-width: 576px) and (max-width: 767px) {
+  .texts-wrapper {
+    margin-top: 150px;
+  }
+  h4,
+  h5 {
+    font-size: 1.8rem;
+    line-height: 2.5rem;
+    margin: 1rem 0;
+    text-align: center;
+  }
+}
+
+/* 575px以下の画面幅 */
+@media (max-width: 575px) {
+  .texts-wrapper {
+    margin-top: 50px;
+  }
+  h4,
+  h5 {
+    font-size: 1.5rem;
+    line-height: 2rem;
+    margin: 1rem 0;
+    text-align: center;
+  }
+}
