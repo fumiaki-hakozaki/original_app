@@ -10,9 +10,9 @@
           <th>Name</th>
           <th>Address</th>
           <th></th>
-          <% if current_user.admin? %>
-          <th></th>
-          <th></th>
+          <% if current_user.present? && current_user.admin? %>
+            <th></th>
+            <th></th>
           <% end %>
         </tr>
       </thead>
@@ -23,7 +23,7 @@
             <td><%= factory.factory_name %></td>
             <td><%= factory.address %></td>
             <td><%= link_to '工場情報確認', factory, class: 'btn btn-outline-primary' %></td>
-            <% if current_user.admin? %>
+            <% if current_user.present? && current_user.admin? %>
             <td><%= link_to '編集', edit_factory_path(factory), class: 'btn btn-outline-secondary' %></td>
             <td><%= link_to '削除', factory, method: :delete, data: { confirm: '削除してよろしいですか?' }, class: 'btn btn-outline-danger' %></td>
             <% end %>
@@ -33,7 +33,7 @@
     </table>
   </div>
 
-  <% if current_user.admin? %>
+  <% if current_user.present? && current_user.admin? %>
     <%= link_to '工場新規登録', new_factory_path, class: 'btn btn-outline-success' %>
     <%= link_to '特徴(カテゴリー)新規登録', new_feature_path, class: 'btn btn-outline-success' %>
   <% end %>

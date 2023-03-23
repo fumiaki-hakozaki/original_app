@@ -23,14 +23,14 @@
                 <li class="nav-item">
                   <%= link_to '工場一覧', factories_path, class: "nav-link" %>
                 </li>
+                <% if current_user.admin? %>
+                  <li class="nav-item">
+                    <%= link_to '管理者画面', rails_admin_path, class: "nav-link" %>
+                  </li>
+                <% end %>
                 <li class="nav-item">
                   <%= link_to 'ログアウト', destroy_user_session_path, method: :delete, class: "nav-link" %>
                 </li>
-                  <% if current_user.admin? %>
-                <li class="nav-item">
-                  <%= link_to '管理者画面', rails_admin_path, class: "nav-link" %>
-                </li>
-              <% end %>
               <% else %>
                 <li class="nav-item">
                   <%= link_to '新規登録', new_user_registration_path, class: "nav-link" %>
@@ -43,6 +43,9 @@
                 </li>
                 <li class="nav-item">
                   <%= link_to 'ゲストユーザー(管理者)', users_guest_admin_sign_in_path, method: :post, class: "nav-link" %>
+                </li>
+                <li class="nav-item">
+                  <%= link_to '工場一覧', factories_path, class: "nav-link", data: { turbolinks: false } %>
                 </li>
               <% end %>
             </ul>
@@ -67,3 +70,4 @@
     </footer>
   </body>
 </html>
+

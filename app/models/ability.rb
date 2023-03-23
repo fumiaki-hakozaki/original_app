@@ -4,6 +4,10 @@ class Ability
   include CanCan::Ability
 
   def initialize(user)
+    return unless user && user&.admin? # 管理者じゃなかったらこのメソッドを抜ける
+
+    can :access, :rails_admin # 管理者画面のアクセス許可
+    can :manage, :all # 管理権限許可
     # Define abilities for the user here. For example:
     #
     #   return unless user.present?
@@ -28,11 +32,5 @@ class Ability
     #
     # See the wiki for details:
     # https://github.com/CanCanCommunity/cancancan/blob/develop/docs/define_check_abilities.md
-  end
-  def initialize(user)
-    return unless user && user&.admin? # 管理者じゃなかったらこのメソッドを抜ける
-
-    can :access, :rails_admin # 管理者画面のアクセス許可
-    can :manage, :all # 管理権限許可
   end
 end
