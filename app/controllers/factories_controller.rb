@@ -4,7 +4,11 @@ class FactoriesController < ApplicationController
 
   # GET /factories or /factories.json
   def index
-    @factories = Factory.all
+    if params[:sort] == "factory_name_asc"
+      @factories = Factory.order(factory_name: :asc)
+    else
+      @factories = Factory.order(factory_name: :desc)
+    end
   end
 
   def top
