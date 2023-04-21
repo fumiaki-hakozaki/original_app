@@ -3,6 +3,14 @@
 <div class="container mt-5">
   <h1 class="text-center">整備工場一覧</h1>
 
+  <div class="form-group">
+    <%= form_tag factories_path, method: :get, class: "form-inline" do %>
+      <%= label_tag :sort, "並べ替え：", class: "mr-2" %>
+      <%= select_tag :sort, options_for_select([["名前順", "factory_name_asc"], ["名前逆順", "factory_name_desc"]], params[:sort]), class: "form-control mr-2", onchange: "$(this).parent('form').submit();" %>
+      <%= submit_tag "検索", class: "btn btn-outline-primary" %>
+    <% end %>
+  </div>
+
   <div class="table-responsive">
     <table class="table table-hover">
       <thead>
